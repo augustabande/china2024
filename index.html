@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cina — 中国 — Atlante 2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ─────────────────────────────────────────
+     Tokens
+  ─────────────────────────────────────────── */
+  :root{
+    --paper:        #F4EFE5;
+    --paper-warm:   #ECE5D6;
+    --paper-deep:   #E3DBC8;
+    --ink:          #1A1814;
+    --ink-soft:     #3A352D;
+    --ink-mute:     #6B6557;
+    --ink-faint:    #948D7E;
+    --rule:         #C9C0AC;
+    --rule-soft:    #DCD4BF;
+    --vermilion:    #A23B2A;
+    --vermilion-d:  #7E2D20;
+    --celadon:      #8FA38C;
+    --brass:        #B8956A;
+
+    --serif:    "Spectral", "EB Garamond", "Georgia", serif;
+    --sans:     "Inter", "Helvetica Neue", Arial, sans-serif;
+    --han:      "Noto Serif SC", "Spectral", serif;
+    --mono:     "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+  /* faint paper grain */
+  body::before{
+    content:"";
+    position: fixed; inset:0;
+    pointer-events:none;
+    z-index: 1;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(180,160,120,.045), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(140,110,80,.04), transparent 50%);
+    mix-blend-mode: multiply;
+  }
+  body::after{
+    content:"";
+    position: fixed; inset:0;
+    pointer-events:none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: .55;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--vermilion); color: var(--paper); }
+
+  .han  { font-family: var(--han); font-weight: 400; }
+  .mono { font-family: var(--mono); }
+  .num  { font-feature-settings: "tnum" 1, "lnum" 1; font-family: var(--mono); }
+
+  /* ─────────────────────────────────────────
+     Site chrome
+  ─────────────────────────────────────────── */
+  .site-header{
+    position: fixed; top:0; left:0; right:0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+    background: linear-gradient(to bottom, rgba(244,239,229,.92), rgba(244,239,229,.6) 80%, rgba(244,239,229,0));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background .3s ease;
+  }
+  .brand{
+    font-family: var(--serif);
+    font-size: 17px;
+    letter-spacing: .04em;
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  .brand .han { font-size: 17px; color: var(--vermilion); }
+  .brand .y   { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); letter-spacing: .15em; }
+  .brand .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-faint); display: inline-block; transform: translateY(-3px); }
+
+  .top-nav { display: flex; gap: 28px; }
+  .top-nav a{
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .top-nav a:hover { color: var(--ink); border-color: var(--ink-faint); }
+
+  /* ─────────────────────────────────────────
+     Hero
+  ─────────────────────────────────────────── */
+  .hero{
+    min-height: 100vh;
+    padding: 110px 56px 60px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-meta{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .hero-meta .right{ text-align: right; }
+
+  .hero-center{
+    align-self: center;
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 80px;
+    align-items: end;
+    padding: 40px 0;
+  }
+  .hero-title{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(74px, 12vw, 184px);
+    line-height: .9;
+    letter-spacing: -.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .hero-title .row1{ display: block; }
+  .hero-title .row2{
+    display: block;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: .55em;
+    letter-spacing: -.01em;
+    line-height: 1;
+    margin-top: 6px;
+  }
+  .hero-title .han-row{
+    display: block;
+    font-family: var(--han);
+    font-weight: 300;
+    color: var(--vermilion);
+    font-size: .38em;
+    letter-spacing: .25em;
+    margin-top: 22px;
+  }
+
+  .hero-rail{
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+    align-self: end;
+  }
+  .hero-rail .label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .hero-rail blockquote{
+    margin: 0 0 36px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    text-indent: -.4em;
+  }
+  .hero-rail blockquote::before { content: "“"; }
+  .hero-rail blockquote::after  { content: "”"; }
+  .hero-rail .attr{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 48px;
+  }
+
+  .hero-facts{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  .fact .v{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--ink);
+    font-feature-settings: "lnum" 1;
+  }
+  .fact .v sup{ font-size: .55em; color: var(--ink-mute); font-weight: 400; }
+  .fact .l{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 8px;
+  }
+
+  .hero-foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .hero-foot .scroll{
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink);
+  }
+  .hero-foot .scroll::before{
+    content: "";
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--ink-soft);
+    animation: extend 2.4s ease-in-out infinite;
+  }
+  @keyframes extend{
+    0%, 100% { transform: scaleX(.4); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: left; }
+  }
+
+  /* ─────────────────────────────────────────
+     Atlas: map + content panel
+  ─────────────────────────────────────────── */
+  .atlas{
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 0;
+    min-height: 100vh;
+    border-top: 1px solid var(--rule);
+  }
+
+  .atlas-map{
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid var(--rule);
+    background:
+      linear-gradient(180deg, rgba(227,219,200,.35), transparent 30%),
+      var(--paper-warm);
+    overflow: hidden;
+  }
+  .map-frame{
+    position: absolute; inset: 0;
+    padding: 56px 40px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  .map-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+  }
+  .map-head .title{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: .01em;
+  }
+  .map-head .title .han{
+    color: var(--vermilion);
+    margin-left: 10px;
+    font-style: normal;
+  }
+  .map-sub{
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .map-svg-wrap{
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-svg{
+    width: 100%; height: 100%;
+    max-width: 720px;
+  }
+  .map-foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .legend{
+    display: flex;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .legend span{ display: inline-flex; align-items: center; gap: 8px; }
+  .legend .dot-base{
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--ink);
+  }
+  .legend .dot-active{
+    display: inline-block; width: 10px; height: 10px;
+    border-radius: 50%; background: var(--vermilion);
+    box-shadow: 0 0 0 3px rgba(162,59,42,.18);
+  }
+  .legend .line-base{
+    display: inline-block; width: 18px; height: 1px;
+    background: var(--ink-faint);
+    border-top: 1px dashed var(--ink-faint);
+    background: none;
+  }
+
+  /* SVG bits */
+  .china-outline{
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 1.1;
+    stroke-linejoin: round;
+    fill-opacity: .65;
+  }
+  .china-wash{
+    fill: var(--paper-deep);
+    fill-opacity: .55;
+  }
+  .latline{
+    stroke: var(--rule);
+    stroke-width: .5;
+    stroke-dasharray: 2 4;
+    fill: none;
+  }
+  .route{
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 1;
+    stroke-dasharray: 4 5;
+    opacity: .55;
+  }
+  .stop-group{ cursor: pointer; }
+  .stop-dot{
+    fill: var(--ink);
+    transition: r .2s ease, fill .2s ease;
+  }
+  .stop-ring{
+    fill: none;
+    stroke: var(--vermilion);
+    stroke-width: 1;
+    opacity: 0;
+    transition: opacity .25s ease, r .25s ease;
+  }
+  .stop-label{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 13px;
+    fill: var(--ink);
+    pointer-events: none;
+    opacity: .85;
+  }
+  .stop-han{
+    font-family: var(--han);
+    font-size: 11px;
+    fill: var(--ink-mute);
+    pointer-events: none;
+  }
+  .stop-group:hover .stop-dot{ fill: var(--vermilion); }
+  .stop-group:hover .stop-ring{ opacity: .35; }
+  .stop-group:hover .stop-label{ fill: var(--vermilion); opacity: 1; }
+  .stop-group.is-active .stop-dot{
+    fill: var(--vermilion);
+    r: 5.5;
+  }
+  .stop-group.is-active .stop-ring{
+    opacity: 1;
+  }
+  .stop-group.is-active .stop-label{
+    fill: var(--vermilion);
+    opacity: 1;
+    font-weight: 500;
+  }
+  .stop-num{
+    font-family: var(--mono);
+    font-size: 9px;
+    fill: var(--ink-faint);
+    letter-spacing: .1em;
+    pointer-events: none;
+  }
+  .compass{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11px;
+    fill: var(--ink-mute);
+  }
+  .geo-label{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    fill: var(--ink-faint);
+    letter-spacing: .12em;
+    pointer-events: none;
+  }
+
+  /* ─────────────────────────────────────────
+     Content rail (right side, fixed-height scroll)
+  ─────────────────────────────────────────── */
+  .atlas-content{
+    position: relative;
+    background: var(--paper);
+    min-height: 100vh;
+  }
+  .content-stage{
+    position: relative;
+    padding: 80px 0 80px;
+    min-height: 100vh;
+  }
+  .content-empty{
+    padding: 40px 64px;
+  }
+  .content-empty .eyebrow{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 22px;
+  }
+  .content-empty h2{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    margin: 0 0 22px;
+    max-width: 22ch;
+  }
+  .content-empty h2 em{ font-style: italic; color: var(--ink-soft); }
+  .content-empty p{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .content-empty ul.section-index{
+    list-style: none;
+    margin: 50px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .content-empty .section-index li{
+    border-bottom: 1px solid var(--rule);
+  }
+  .content-empty .section-index a{
+    display: grid;
+    grid-template-columns: 36px 1fr 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 18px 0;
+    cursor: pointer;
+    transition: background .25s, padding .25s;
+  }
+  .content-empty .section-index a:hover{
+    background: var(--paper-warm);
+    padding-left: 14px; padding-right: 14px;
+  }
+  .content-empty .section-index a:hover .si-title{ color: var(--vermilion); }
+  .si-num{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: .1em;
+  }
+  .si-title{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink);
+    transition: color .2s;
+  }
+  .si-title em{ font-style: italic; color: var(--ink-soft); display: block; font-size: 14px; margin-top: 2px; }
+  .si-han{
+    font-family: var(--han);
+    font-size: 13px;
+    color: var(--vermilion);
+    letter-spacing: .15em;
+  }
+  .si-tag{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* Article — open content */
+  .article{
+    display: none;
+    padding: 0 64px 80px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .article.is-active{ display: block; }
+  .article-head{
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .article-eyebrow{
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
+  }
+  .article-eyebrow .han{ color: var(--vermilion); font-size: 13px; letter-spacing: .25em; }
+  .article h2{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -.015em;
+    margin: 0 0 14px;
+  }
+  .article h2 em{ font-style: italic; color: var(--ink-soft); }
+  .article .deck{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    max-width: 36ch;
+  }
+  .article .article-meta{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px 32px;
+    margin-top: 6px;
+  }
+  .article-meta .m-l{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .article-meta .m-v{
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+
+  .article p{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 17.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    text-wrap: pretty;
+  }
+  .article p.lede{
+    font-size: 19.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .article p.lede::first-letter{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 64px;
+    line-height: .85;
+    float: left;
+    margin: 6px 12px 0 -4px;
+    color: var(--vermilion);
+  }
+  .article h3{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 48px 0 14px;
+    color: var(--ink);
+  }
+  .article h3 .han{
+    font-size: 16px;
+    color: var(--vermilion);
+    font-weight: 400;
+    margin-left: 10px;
+    letter-spacing: .15em;
+  }
+  .article h4{
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin: 32px 0 12px;
+  }
+  .article ul{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .article ul li{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .article ul li::before{
+    content:"";
+    position: absolute;
+    left: 0; top: 12px;
+    width: 8px; height: 1px;
+    background: var(--vermilion);
+  }
+  .article ol{
+    list-style: none;
+    counter-reset: art;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .article ol li{
+    counter-increment: art;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-left: 32px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .article ol li::before{
+    content: counter(art, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    color: var(--brass);
+  }
+  .article blockquote{
+    margin: 36px -12px;
+    padding: 24px 28px;
+    border-left: 2px solid var(--vermilion);
+    background: var(--paper-warm);
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .article blockquote .src{
+    display: block;
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 14px;
+  }
+  .article table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+  .article th{
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-bottom: 1px solid var(--ink);
+    padding: 12px 10px 10px;
+    font-weight: 500;
+  }
+  .article td{
+    border-bottom: 1px solid var(--rule);
+    padding: 13px 10px;
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  .article td:first-child{
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 16px;
+  }
+  .article td .han{ color: var(--vermilion); margin-left: 6px; font-size: 13px; }
+  .article td.n{
+    font-family: var(--mono);
+    text-align: right;
+    color: var(--ink);
+  }
+
+  .pull{
+    margin: 40px -64px;
+    padding: 40px 64px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper-warm);
+  }
+  .pull .pq{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+    text-indent: -.4em;
+  }
+  .pull .pq::before { content: "“"; }
+  .pull .pq::after  { content: "”"; }
+
+  /* Article nav: prev / next */
+  .article-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 56px;
+    padding-top: 26px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .article-nav .nv{
+    cursor: pointer;
+    display: flex; flex-direction: column;
+    gap: 6px;
+    transition: color .2s;
+  }
+  .article-nav .nv:hover{ color: var(--vermilion); }
+  .article-nav .nv .nv-l{ font-size: 9px; opacity: .7; }
+  .article-nav .nv .nv-t{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .article-nav .nv.next{ text-align: right; align-items: flex-end; }
+  .article-nav .nv.empty{ visibility: hidden; }
+
+  .article-close{
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    z-index: 4;
+    background: none; border: none;
+    padding: 8px 0;
+    transition: color .2s;
+  }
+  .article-close:hover{ color: var(--vermilion); }
+  .article-close::after{
+    content:""; width: 14px; height: 1px;
+    background: currentColor;
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  .article-close::before{
+    content:""; width: 14px; height: 1px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 0;
+  }
+  .article-close span{ pointer-events: none; }
+
+  /* Itinerary mini-strip */
+  .itin-strip{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 28px 0 32px;
+  }
+  .itin-strip .stp{
+    padding: 18px 14px;
+    border-right: 1px solid var(--rule);
+  }
+  .itin-strip .stp:last-child{ border-right: 0; }
+  .itin-strip .stp .n{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    color: var(--ink-faint);
+  }
+  .itin-strip .stp .t{
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-top: 6px;
+    color: var(--ink);
+  }
+  .itin-strip .stp .t .han{
+    font-size: 12px;
+    color: var(--vermilion);
+    margin-left: 4px;
+  }
+  .itin-strip .stp .d{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+  }
+
+  /* Footer */
+  .site-foot{
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--rule);
+    padding: 56px 56px 48px;
+    background: var(--paper-warm);
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .site-foot .row{
+    display: flex; justify-content: space-between; align-items: flex-end;
+    max-width: 1240px; margin: 0 auto;
+  }
+  .site-foot .mark{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .site-foot .mark .han{ color: var(--vermilion); margin-left: 10px; font-style: normal; }
+  .site-foot .cols{ display: flex; gap: 56px; }
+  .site-foot .col span{ display: block; color: var(--ink-faint); margin-bottom: 4px; font-size: 10px; }
+  .site-foot .col em{ font-family: var(--serif); font-style: italic; color: var(--ink); font-size: 14px; letter-spacing: 0; text-transform: none; }
+
+  /* small / mobile */
+  @media (max-width: 900px){
+    .hero { padding: 92px 24px 40px; }
+    .hero-center{ grid-template-columns: 1fr; gap: 40px; padding: 24px 0; }
+    .hero-rail{ border-left: 0; border-top: 1px solid var(--rule); padding: 28px 0 0; }
+    .hero-facts{ grid-template-columns: repeat(2,1fr); }
+    .atlas{ grid-template-columns: 1fr; }
+    .atlas-map{ position: relative; height: 70vh; border-right: 0; border-bottom: 1px solid var(--rule); }
+    .map-frame{ padding: 32px 18px 40px; }
+    .article{ padding: 0 24px 60px; }
+    .article-close{ right: 24px; top: 24px; }
+    .content-empty{ padding: 32px 24px; }
+    .article h2{ font-size: 38px; }
+    .pull{ margin: 28px -24px; padding: 28px 24px; }
+    .pull .pq{ font-size: 22px; }
+    .site-header{ padding: 14px 18px; }
+    .top-nav{ display: none; }
+    .site-foot{ padding: 40px 24px; }
+    .site-foot .row{ flex-direction: column; gap: 28px; align-items: flex-start; }
+    .site-foot .cols{ flex-wrap: wrap; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" data-screen-label="00 Header">
+  <div class="brand">
+    <span class="serif" style="font-family:var(--serif); font-style:italic;">Atlante Cina</span>
+    <span class="dot"></span>
+    <span class="han">中国</span>
+    <span class="dot"></span>
+    <span class="y">MMXXIV</span>
+  </div>
+  <nav class="top-nav">
+    <a data-jump="atlas">Atlante</a>
+    <a data-jump="overview">Contesto</a>
+    <a data-jump="itinerario">Itinerario</a>
+    <a data-jump="footer">Colophon</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-meta">
+    <div>N° 001 · Atlante personale · Cina</div>
+    <div class="right">15 Luglio — 30 Luglio · 2024</div>
+  </div>
+
+  <div class="hero-center">
+    <h1 class="hero-title">
+      <span class="row1">Cina,</span>
+      <span class="row2">duemilaventiquattro.</span>
+      <span class="han-row">中 · 国 · 二零二四</span>
+    </h1>
+
+    <div class="hero-rail">
+      <div class="label">Estratto</div>
+      <blockquote>La Cina non è una destinazione: è un viaggio nella storia, nella cultura e nell'identità di un popolo.</blockquote>
+      <div class="attr">— Appunti dal viaggio · 再见</div>
+
+      <div class="hero-facts">
+        <div class="fact"><div class="v">15</div><div class="l">Giorni</div></div>
+        <div class="fact"><div class="v">5</div><div class="l">Basi · Notti</div></div>
+        <div class="fact"><div class="v">8</div><div class="l">Tappe</div></div>
+        <div class="fact"><div class="v">3<sup>·</sup><span style="font-size:.6em;">2</span></div><div class="l">Voli · Treni</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div>Shanghai · Yunnan · Pechino</div>
+    <div class="scroll" id="heroScroll">Apri la mappa</div>
+    <div>上海 — 云南 — 北京</div>
+  </div>
+</section>
+
+<!-- ─── ATLAS ─────────────────────────────────────── -->
+<section class="atlas" id="atlas" data-screen-label="02 Atlas">
+
+  <!-- ── Map (sticky, left) ────────────────────── -->
+  <aside class="atlas-map" id="atlasMap">
+    <div class="map-frame">
+      <div class="map-head">
+        <div class="title">Tavola I — <span class="han">中国</span></div>
+        <div>Scala · approssimata</div>
+      </div>
+      <div class="map-sub">Otto tappe — una rotta tra metropoli, valli e montagne</div>
+
+      <div class="map-svg-wrap">
+        <svg class="map-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mappa stilizzata della Cina con le tappe del viaggio">
+          <defs>
+            <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="6" stroke="#C9C0AC" stroke-width=".5" />
+            </pattern>
+          </defs>
+
+          <!-- faint lat/lon grid -->
+          <g class="latline">
+            <line x1="0"    y1="200" x2="1000" y2="200" />
+            <line x1="0"    y1="400" x2="1000" y2="400" />
+            <line x1="0"    y1="600" x2="1000" y2="600" />
+            <line x1="200"  y1="0"   x2="200"  y2="800" />
+            <line x1="500"  y1="0"   x2="500"  y2="800" />
+            <line x1="800"  y1="0"   x2="800"  y2="800" />
+          </g>
+
+          <!-- China silhouette (simplified, editorial) -->
+          <g>
+            <path class="china-outline" d="
+              M 880,90
+              C 860,80 830,82 800,92
+              L 760,108
+              C 720,115 700,90 680,68
+              C 660,52 632,46 605,52
+              L 560,62
+              C 530,80 498,92 470,86
+              L 420,80
+              C 380,76 350,90 326,108
+              L 270,118
+              C 220,136 170,168 138,212
+              C 116,248 108,290 110,328
+              L 116,376
+              C 124,418 144,452 170,478
+              L 220,498
+              C 252,508 280,520 296,544
+              L 332,584
+              C 346,612 370,640 408,660
+              C 446,676 488,672 524,664
+              L 580,656
+              C 600,654 612,672 600,694
+              L 588,718
+              C 580,734 558,734 548,716
+              L 540,696
+              C 538,678 558,672 580,668
+              L 614,660
+              C 660,652 700,632 724,598
+              L 748,548
+              C 762,498 770,448 780,396
+              L 800,328
+              C 820,288 854,266 870,232
+              L 882,184
+              C 890,154 892,118 880,90 Z
+            " />
+
+            <!-- inner geographic wash (sub regions hinted) -->
+            <path class="china-wash" d="
+              M 300,400
+              C 350,380 420,400 470,420
+              L 540,460
+              C 580,490 620,500 660,500
+              L 700,490
+              C 720,480 720,520 700,540
+              L 660,560
+              C 600,580 540,580 480,560
+              L 420,540
+              C 360,520 320,480 300,440 Z
+            " opacity=".3" />
+          </g>
+
+          <!-- Geographic reference labels -->
+          <text x="220" y="260" class="geo-label">TIBET</text>
+          <text x="600" y="160" class="geo-label">MONGOLIA INTERNA</text>
+          <text x="380" y="600" class="geo-label">YUNNAN</text>
+          <text x="780" y="540" class="geo-label">MAR CINESE</text>
+          <text x="730" y="240" class="geo-label" opacity=".5">HEBEI</text>
+
+          <!-- Route (chronological, dashed) -->
+          <path class="route" d="M 724,474 Q 600,540 435,558 L 428,540 L 435,581 L 431,566 Q 540,440 654,304" />
+
+          <!-- Compass -->
+          <g transform="translate(910, 70)">
+            <line x1="0" y1="-20" x2="0" y2="20" stroke="#3A352D" stroke-width=".7" />
+            <line x1="-15" y1="0" x2="15" y2="0" stroke="#3A352D" stroke-width=".7" />
+            <text x="0" y="-26" text-anchor="middle" class="compass">N</text>
+          </g>
+
+          <!-- STOPS -->
+          <!-- Coordinates approximate. Numbered in chronological order. -->
+          <g class="stop-group" data-stop="shanghai" tabindex="0" role="button" aria-label="Apri sezione Shanghai">
+            <circle class="stop-ring" cx="724" cy="474" r="12" />
+            <circle class="stop-dot"  cx="724" cy="474" r="4.2" />
+            <text x="736" y="471" class="stop-label">Shanghai</text>
+            <text x="736" y="486" class="stop-han">上海</text>
+            <text x="710" y="465" class="stop-num" text-anchor="end">01</text>
+          </g>
+
+          <g class="stop-group" data-stop="zhouzhuang" tabindex="0" role="button" aria-label="Apri sezione Zhouzhuang">
+            <circle class="stop-ring" cx="708" cy="490" r="10" />
+            <circle class="stop-dot"  cx="708" cy="490" r="3" />
+            <text x="660" y="510" class="stop-label" text-anchor="end">Zhouzhuang</text>
+            <text x="660" y="524" class="stop-han"  text-anchor="end">周庄</text>
+          </g>
+
+          <g class="stop-group" data-stop="shuhe" tabindex="0" role="button" aria-label="Apri sezione Shuhe e Lijiang">
+            <circle class="stop-ring" cx="435" cy="558" r="12" />
+            <circle class="stop-dot"  cx="435" cy="558" r="4.2" />
+            <text x="423" y="555" class="stop-label" text-anchor="end">Lijiang / Shuhe</text>
+            <text x="423" y="570" class="stop-han"   text-anchor="end">丽江 · 束河</text>
+            <text x="448" y="555" class="stop-num">02</text>
+          </g>
+
+          <g class="stop-group" data-stop="shaxi" tabindex="0" role="button" aria-label="Apri sezione Shaxi">
+            <circle class="stop-ring" cx="408" cy="582" r="10" />
+            <circle class="stop-dot"  cx="408" cy="582" r="3" />
+            <text x="396" y="600" class="stop-label" text-anchor="end">Shaxi</text>
+            <text x="396" y="614" class="stop-han"  text-anchor="end">沙溪</text>
+          </g>
+
+          <g class="stop-group" data-stop="shangrila" tabindex="0" role="button" aria-label="Apri sezione Shangri-La">
+            <circle class="stop-ring" cx="428" cy="528" r="12" />
+            <circle class="stop-dot"  cx="428" cy="528" r="4.2" />
+            <text x="416" y="525" class="stop-label" text-anchor="end">Shangri-La</text>
+            <text x="416" y="540" class="stop-han"   text-anchor="end">香格里拉</text>
+            <text x="441" y="525" class="stop-num">03</text>
+          </g>
+
+          <g class="stop-group" data-stop="dali" tabindex="0" role="button" aria-label="Apri sezione Dali">
+            <circle class="stop-ring" cx="455" cy="600" r="12" />
+            <circle class="stop-dot"  cx="455" cy="600" r="4.2" />
+            <text x="468" y="603" class="stop-label">Dali</text>
+            <text x="468" y="617" class="stop-han">大理</text>
+            <text x="442" y="595" class="stop-num" text-anchor="end">04</text>
+          </g>
+
+          <g class="stop-group" data-stop="beijing" tabindex="0" role="button" aria-label="Apri sezione Pechino">
+            <circle class="stop-ring" cx="654" cy="304" r="12" />
+            <circle class="stop-dot"  cx="654" cy="304" r="4.2" />
+            <text x="666" y="301" class="stop-label">Pechino</text>
+            <text x="666" y="316" class="stop-han">北京</text>
+            <text x="640" y="295" class="stop-num" text-anchor="end">05</text>
+          </g>
+
+          <g class="stop-group" data-stop="huanghuacheng" tabindex="0" role="button" aria-label="Apri sezione Grande Muraglia">
+            <circle class="stop-ring" cx="640" cy="270" r="10" />
+            <circle class="stop-dot"  cx="640" cy="270" r="3" />
+            <text x="628" y="260" class="stop-label" text-anchor="end">Huanghuacheng</text>
+            <text x="628" y="274" class="stop-han"   text-anchor="end">黄花城</text>
+          </g>
+
+        </svg>
+      </div>
+
+      <div class="map-foot">
+        <div class="legend">
+          <span><i class="dot-base"></i> Tappa</span>
+          <span><i class="dot-active"></i> Aperta</span>
+          <span><i class="line-base"></i> Rotta</span>
+        </div>
+        <div>Luglio 2024</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Content (right) ─────────────────────── -->
+  <main class="atlas-content">
+    <div class="content-stage">
+
+      <!-- Empty state / index -->
+      <div class="content-empty" id="contentEmpty">
+        <div class="eyebrow">Atlante · Indice</div>
+        <h2>Un archivio del viaggio, <em>non una promessa.</em></h2>
+        <p>
+          Quindici giorni in Cina, archiviati come capitoli indipendenti.
+          La mappa è la chiave d'accesso: scegli una tappa per leggerla,
+          oppure entra dagli approfondimenti tematici qui sotto.
+          L'ordine cronologico esiste, ma non è il punto.
+        </p>
+
+        <ul class="section-index">
+          <li><a data-open="overview">
+            <span class="si-num num">§ 00</span>
+            <span class="si-title">Contesto <em>Come si organizza un viaggio in Cina</em></span>
+            <span class="si-han">中国</span>
+            <span class="si-tag">Pratico</span>
+          </a></li>
+          <li><a data-open="itinerario">
+            <span class="si-num num">§ 01</span>
+            <span class="si-title">Itinerario <em>Da Shanghai a Pechino, passando per lo Yunnan</em></span>
+            <span class="si-han">行程</span>
+            <span class="si-tag">15 giorni</span>
+          </a></li>
+          <li><a data-open="shanghai">
+            <span class="si-num num">§ 02</span>
+            <span class="si-title">Shanghai <em>Tre giorni tra storia e modernità</em></span>
+            <span class="si-han">上海</span>
+            <span class="si-tag">3 notti</span>
+          </a></li>
+          <li><a data-open="frenchconcession">
+            <span class="si-num num">§ 03</span>
+            <span class="si-title">French Concession <em>Walking tour nel quartiere coloniale</em></span>
+            <span class="si-han">法租界</span>
+            <span class="si-tag">Quartiere</span>
+          </a></li>
+          <li><a data-open="zhouzhuang">
+            <span class="si-num num">§ 04</span>
+            <span class="si-title">Zhouzhuang <em>Una città sull'acqua</em></span>
+            <span class="si-han">周庄</span>
+            <span class="si-tag">Escursione</span>
+          </a></li>
+          <li><a data-open="yunnan">
+            <span class="si-num num">§ 05</span>
+            <span class="si-title">Yunnan del Nord <em>Città storiche, monasteri, minoranze</em></span>
+            <span class="si-han">云南</span>
+            <span class="si-tag">7 notti</span>
+          </a></li>
+          <li><a data-open="huanghuacheng">
+            <span class="si-num num">§ 06</span>
+            <span class="si-title">Huanghuacheng <em>Il tratto sconosciuto della Grande Muraglia</em></span>
+            <span class="si-han">黄花城</span>
+            <span class="si-tag">Muraglia</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Close button (shown only when an article is open) -->
+      <button class="article-close" id="articleClose" style="display:none;" aria-label="Chiudi articolo e torna all'indice">
+        <span>Chiudi · torna all'atlante</span>
+      </button>
+
+      <!-- ── ARTICLES ────────────────────────────── -->
+
+      <!-- OVERVIEW -->
+      <article class="article" id="art-overview" data-screen-label="A · Overview">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 00 · Contesto</span>
+            <span class="han">中国 · 实用指南</span>
+          </div>
+          <h2>Come si organizza un viaggio <em>in Cina</em></h2>
+          <p class="deck">Studio del Paese, periodo migliore, voli, trasporti, documenti, pagamenti, internet. Una guida nata da un viaggio fai-da-te di quindici giorni.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Capitale</div><div class="m-v">Pechino</div></div>
+            <div><div class="m-l">Abitanti</div><div class="m-v">1,4 mld</div></div>
+            <div><div class="m-l">Province</div><div class="m-v">23 + 5 + 4</div></div>
+            <div><div class="m-l">Valuta</div><div class="m-v">¥ Yuan</div></div>
+          </div>
+        </header>
+
+        <p class="lede">La Cina non si lascia attraversare. È grande quanto l'Europa, e pensare di vederla tutta in due settimane è come voler vedere tutta l'Europa nello stesso tempo: una promessa che si rompe alla prima coincidenza. La prima fase, prima delle prenotazioni, è quindi uno studio del Paese — capire quali province parlano alla tua idea di viaggio e scartare il resto senza rimorso.</p>
+
+        <p>Il consiglio generale è di scegliere poche aree coerenti tra loro, ricavare una mappa personale dei luoghi che interessano, e costruire intorno a quella un itinerario flessibile, con piani B sui trasporti, sulle escursioni e sulla connessione di rete.</p>
+
+        <h3>Quando andare <span class="han">何时去</span></h3>
+        <p>Primavera e autunno sono le stagioni indicate: temperature miti, paesaggi favorevoli, meno piogge. Da evitare, se possibile, le grandi vacanze nazionali — Capodanno cinese, settimana del Primo Maggio, Festa di Metà Autunno, Settimane d'Oro — quando trasporti e attrazioni si saturano. L'estate a Pechino e Shanghai può sfiorare i 40 gradi e portare tifoni; lo Yunnan resta più clemente.</p>
+
+        <h3>Documenti <span class="han">证件</span></h3>
+        <p>Dal 1° luglio 2024 al 31 dicembre 2025 la Cina ha applicato un'esenzione visto per soggiorni fino a 30 giorni per i passaporti italiani. Per soggiorni più lunghi serve un visto turistico, richiedibile ad ambasciata o consolato. Il passaporto deve essere valido almeno sei mesi dall'ingresso e va portato <em>fisicamente</em> a ogni biglietteria turistica.</p>
+
+        <blockquote>
+          Più una località è comoda da raggiungere, più tende a essere affollata.
+          <span class="src">Regola generale del viaggio in Cina</span>
+        </blockquote>
+
+        <h3>Trasporti <span class="han">交通</span></h3>
+        <ul>
+          <li><strong>Treni ad alta velocità</strong> (categorie G e D) per i grandi spostamenti — puntuali, comodi, prenotabili su Trip.com o, con verifica d'identità, su 12306.cn. I biglietti si liberano due mesi prima.</li>
+          <li><strong>Voli interni</strong> con Air China, China Eastern, China Southern. Da prenotare in anticipo, soprattutto vicino a festività.</li>
+          <li><strong>Didi</strong> (l'equivalente cinese di Uber) per gli spostamenti in città e per escursioni autonome. Funziona in inglese.</li>
+          <li><strong>Auto a noleggio</strong> sconsigliata: serve permesso temporaneo cinese, procedura non immediata.</li>
+        </ul>
+
+        <h3>Internet, VPN, eSIM <span class="han">网络</span></h3>
+        <p>Google, Facebook, YouTube e gran parte dei servizi occidentali sono bloccati. La VPN va installata <em>prima</em> di partire — alcune molto note (ExpressVPN, NordVPN) possono non funzionare; meglio orientarsi su Astrill, Mullvad o LetsVPN. Una eSIM (per esempio Holafly, con VPN integrata) consente di arrivare già connessi; in alternativa, SIM locali di China Mobile, Unicom o Telecom.</p>
+
+        <h3>Pagamenti <span class="han">支付</span></h3>
+        <p>I pagamenti digitali tramite <strong>WeChat Pay</strong> e <strong>Alipay</strong> sono lo standard: si paga ovunque, dai negozi ai mercati rurali. Vanno configurati prima della partenza, collegando una o due carte di credito internazionali. Un po' di contanti aiuta nelle situazioni residuali, ma Visa e MasterCard restano accettate solo in hotel e ristoranti di fascia alta, con commissioni alte.</p>
+
+        <h3>Mappe, lingua, traduttori</h3>
+        <p>Google Maps funziona con VPN, ma è meglio disattivare il satellite e affiancare Apple Maps (iPhone) o Maps.me (Android), scaricando le aree offline. Google Translate è quasi indispensabile — soprattutto la traduzione dalla fotocamera per menù e segnali. Per il traduttore impostare <strong>cinese semplificato</strong>, usato nella Cina continentale.</p>
+
+        <div class="pull">
+          <p class="pq">Più il lavoro di ricerca è accurato prima della partenza, più sarà semplice godersi il Paese sul posto.</p>
+        </div>
+
+        <p>Ogni elemento di questa guida è una porta. Dietro c'è il viaggio vero — quello che si lascia raccontare solo dopo, tappa per tappa, nei capitoli che seguono.</p>
+
+        <nav class="article-nav">
+          <div class="nv empty"></div>
+          <div class="nv next" data-open="itinerario">
+            <span class="nv-l">Successivo · § 01</span>
+            <span class="nv-t">L'itinerario completo</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- ITINERARIO -->
+      <article class="article" id="art-itinerario" data-screen-label="B · Itinerario">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 01 · Itinerario</span>
+            <span class="han">行程</span>
+          </div>
+          <h2>Shanghai · Yunnan · <em>Pechino</em></h2>
+          <p class="deck">Quindici giorni costruiti per attraversare anime diverse del Paese: la modernità della metropoli, lo Yunnan rurale al confine col Tibet, la storia imperiale e la Grande Muraglia.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Durata</div><div class="m-v">15 giorni</div></div>
+            <div><div class="m-l">Notti</div><div class="m-v">13</div></div>
+            <div><div class="m-l">Periodo</div><div class="m-v">Luglio 2024</div></div>
+            <div><div class="m-l">Tappe</div><div class="m-v">5 basi</div></div>
+          </div>
+        </header>
+
+        <p class="lede">L'itinerario nasce dall'idea di non limitarsi a una sola Cina. Shanghai per il primo impatto contemporaneo — venti milioni di abitanti, grattacieli e quartieri storici che convivono. Lo Yunnan settentrionale per la Cina rurale, le minoranze etniche, le città storiche e una porta d'ingresso alla cultura tibetana. Pechino, in chiusura, per la storia imperiale e la Muraglia.</p>
+
+        <div class="itin-strip">
+          <div class="stp">
+            <div class="n">01</div>
+            <div class="t">Shanghai <span class="han">上海</span></div>
+            <div class="d">3 notti · Luglio 16–19</div>
+          </div>
+          <div class="stp">
+            <div class="n">02</div>
+            <div class="t">Shuhe <span class="han">束河</span></div>
+            <div class="d">3 notti · Luglio 19–22</div>
+          </div>
+          <div class="stp">
+            <div class="n">03</div>
+            <div class="t">Shangri-La <span class="han">香格里拉</span></div>
+            <div class="d">3 notti · Luglio 22–25</div>
+          </div>
+          <div class="stp">
+            <div class="n">04</div>
+            <div class="t">Dali <span class="han">大理</span></div>
+            <div class="d">1 notte · Luglio 25–26</div>
+          </div>
+          <div class="stp">
+            <div class="n">05</div>
+            <div class="t">Pechino <span class="han">北京</span></div>
+            <div class="d">3 notti · Luglio 26–30</div>
+          </div>
+        </div>
+
+        <h3>Distribuzione delle notti</h3>
+        <table>
+          <thead>
+            <tr><th>Base</th><th>Notti</th><th>Esperienze principali</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Shanghai <span class="han">上海</span></td>
+              <td class="n">3</td>
+              <td>Bund, Pudong, French Concession, Xintiandi, Giardini Yu, water town</td>
+            </tr>
+            <tr>
+              <td>Shuhe <span class="han">束河</span></td>
+              <td class="n">3</td>
+              <td>Base per Lijiang, Baisha, Shaxi, Shibaoshan · cultura Bai e Naxi</td>
+            </tr>
+            <tr>
+              <td>Shangri-La <span class="han">香格里拉</span></td>
+              <td class="n">3</td>
+              <td>Monastero di Songzanlin, Riserva di Napahai, atmosfera tibetana</td>
+            </tr>
+            <tr>
+              <td>Dali <span class="han">大理</span></td>
+              <td class="n">1</td>
+              <td>Centro storico, Tre Pagode, Lago Erhai — meriterebbe di più</td>
+            </tr>
+            <tr>
+              <td>Pechino <span class="han">北京</span></td>
+              <td class="n">3</td>
+              <td>Hutong, Lama Temple, Tiananmen, Grande Muraglia Huanghuacheng</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Spostamenti tra le tappe</h3>
+        <ul>
+          <li><strong>Shanghai → Lijiang</strong> · volo diretto China Eastern, ~4 ore</li>
+          <li><strong>Shuhe → Shangri-La</strong> · circa 1 ora di treno verso nord</li>
+          <li><strong>Shangri-La → Dali</strong> · treno ~4 ore (cercare "Xianggelila")</li>
+          <li><strong>Dali → Pechino</strong> · volo China Eastern, ~3 ore</li>
+        </ul>
+
+        <div class="pull">
+          <p class="pq">Soggiornare almeno tre notti nella stessa struttura, per ambientarsi e visitare i dintorni con più calma.</p>
+        </div>
+
+        <h3>Cosa si sarebbe aggiunto, con più tempo</h3>
+        <p>Con tre settimane invece di due, l'itinerario sarebbe rimasto identico nell'impianto, ma con qualche aggiunta strategica: lo Yunnan del sud (escluso per mancanza di tempo), una Pechino più approfondita — quattro o cinque notti almeno — e magari Hangzhou o Suzhou come tappa intermedia. Oppure, in alternativa, una settimana in un'altra provincia: Sichuan o Guizhou.</p>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="overview">
+            <span class="nv-l">Precedente · § 00</span>
+            <span class="nv-t">Contesto e guida pratica</span>
+          </div>
+          <div class="nv next" data-open="shanghai">
+            <span class="nv-l">Successivo · § 02</span>
+            <span class="nv-t">Shanghai</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- SHANGHAI -->
+      <article class="article" id="art-shanghai" data-screen-label="C · Shanghai">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 02 · Shanghai · 上海</span>
+            <span class="han">三天</span>
+          </div>
+          <h2>Shanghai, <em>tre giorni</em></h2>
+          <p class="deck">Una metropoli di venti milioni di abitanti, efficiente e silenziosa al di fuori dei luoghi più turistici. Tra giardini Ming, lungofiume coloniale e torri al tramonto.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Notti</div><div class="m-v">3</div></div>
+            <div><div class="m-l">Base</div><div class="m-v">The Langham, Xintiandi</div></div>
+            <div><div class="m-l">Spostamenti</div><div class="m-v">Metro · Didi</div></div>
+            <div><div class="m-l">Coord.</div><div class="m-v">31.2° N · 121.5° E</div></div>
+          </div>
+        </header>
+
+        <p class="lede">Shanghai si percepisce, almeno fuori dai luoghi più frequentati, come una città estremamente organizzata, ordinata, quasi proiettata nel futuro. L'itinerario di tre giorni alterna la città vecchia ai grattacieli di Pudong, la French Concession alle water town dei dintorni — senza pretendere di esaurire nulla.</p>
+
+        <h3>Giorno 1 — Dalla storia alla modernità <span class="han">古今</span></h3>
+        <p>Si parte dal <strong>Giardino Yuyuan</strong>, costruito nel 1577 sotto la dinastia Ming da un alto funzionario come luogo di riposo per i genitori anziani. Padiglioni, ponticelli, laghetti, architetture tradizionali. Il biglietto costa circa quattro euro; il consiglio è di entrare al mattino presto, sia per la luce sia per la folla.</p>
+        <p>Accanto, la <strong>città vecchia</strong> (Nanshi). Da visitare per farsi un'idea, ma con riserva: il centro è in gran parte ricostruito, una sequenza di negozi e ristoranti che ricorda più un centro commerciale che un quartiere storico.</p>
+        <p>Si prosegue verso <strong>People's Square</strong> con Didi o metropolitana, e si sceglie un museo tra lo Shanghai Urban Planning Exhibition Center, il Museo di Shanghai e il MoCA. Da lì, Nanjing Road conduce verso il <strong>Bund</strong>, da raggiungere al tramonto per la vista sui grattacieli di Pudong dall'altra sponda dell'Huangpu.</p>
+
+        <h4>Cena dietro al Bund</h4>
+        <p>Sconsigliati i rooftop e i ristoranti internazionali delle guide. Meglio i piccoli locali tradizionali nelle strade dietro al lungofiume — Jujiang Road, Tianjin Road. Esperienza personale: un ristorante in Jiujiang Road specializzato in ravioli fatti a mano.</p>
+
+        <h3>Giorno 2 — L'anima creativa <span class="han">法租界</span></h3>
+        <p>La seconda giornata appartiene alla <strong>French Concession</strong>, area che ha lasciato l'impressione più forte del soggiorno. Walking tour autonomo: Xintiandi, le case shikumen riconvertite, Fuxing Park con il tai chi all'alba, Tianzifang e i suoi vicoli di gallerie, sarti e qipao di Maoming South Road, l'art déco del Cathay Theatre.</p>
+        <p>Pranzo in Taikang Road da <strong>Wei Xiang Zhai</strong>, citato sulla guida Michelin ma con piatti sotto i cinque euro. Specialità: i noodles. Scelta sicura, i noodles in brodo di manzo — <span class="han">牛肉汤面</span>.</p>
+
+        <h3>Giorno 2 / pomeriggio — Pudong <span class="han">浦东</span></h3>
+        <p>Salita alla <strong>Shanghai Tower</strong>, osservatorio al 118° piano, ideale al tramonto (e quindi nel momento di massima affluenza). I biglietti vanno acquistati in anticipo su Trip.com. Per chi non soffre di vertigini, l'alternativa è la <strong>Oriental Pearl Tower</strong>, con la piattaforma a pavimento di vetro. Dentro la Shanghai Tower vivono anche il J Hotel, la libreria Duoyun Books al 52° piano e lo Shanghai Guanfu Museum al 37°.</p>
+
+        <div class="pull">
+          <p class="pq">La sensazione, fuori dai luoghi turistici, è quella di una città estremamente organizzata, quasi proiettata nel futuro.</p>
+        </div>
+
+        <h3>Giorno 3 — Fuori città <span class="han">水乡</span></h3>
+        <p>Il terzo giorno è dedicato a una water town nei dintorni. La scelta è <strong>Zhouzhuang</strong>, raggiunta con un Didi privato prenotato il giorno prima — circa 30–40 euro a tratta, sessanta minuti d'auto. Tra le alternative considerate, Nanxun (meno affollata) e Suzhou (vera metropoli, raggiungibile con un treno veloce in trenta minuti, meriterebbe almeno un paio di giorni).</p>
+
+        <h3>Dove dormire</h3>
+        <p>L'hotel scelto è il <strong>The Langham</strong>, a Xintiandi. Posizione centrale, colazione valida, vista sulla città; soprattutto, una zona da cui ci si può muovere a piedi senza fatica, con ristoranti, caffè e punti di interesse a distanza ravvicinata.</p>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="itinerario">
+            <span class="nv-l">Precedente · § 01</span>
+            <span class="nv-t">Itinerario</span>
+          </div>
+          <div class="nv next" data-open="frenchconcession">
+            <span class="nv-l">Approfondimento · § 03</span>
+            <span class="nv-t">French Concession</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- FRENCH CONCESSION -->
+      <article class="article" id="art-frenchconcession" data-screen-label="D · French Concession">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 03 · French Concession</span>
+            <span class="han">上海法租界</span>
+          </div>
+          <h2>French Concession, <em>a piedi</em></h2>
+          <p class="deck">Walking tour nello storico quartiere coloniale di Shanghai: viali alberati, art déco, sarti di qipao, parchi con tai chi, vicoli di vita quotidiana.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Periodo</div><div class="m-v">1849 — 1946</div></div>
+            <div><div class="m-l">Stile</div><div class="m-v">Coloniale · Art déco</div></div>
+            <div><div class="m-l">Durata</div><div class="m-v">3–5 ore</div></div>
+            <div><div class="m-l">Note</div><div class="m-v">A piedi</div></div>
+          </div>
+        </header>
+
+        <p class="lede">La Concessione Francese di Shanghai — <span class="han">上海法租界</span> — fu attiva dal 1849 al 1946, e nel Novecento divenne una delle aree più importanti della città. Oggi è un quartiere fatto di viali alberati, case in stile europeo e Tudor immerse nel verde, caffè e una memoria coloniale che convive con la vita urbana contemporanea. Una zona da percorrere lentamente.</p>
+
+        <h3>Da Fuxing Park al Museo della Residenza di Sun Yat-Sen</h3>
+        <p>Il percorso comincia a <strong>Fuxing Park</strong>, all'angolo con Yandang Road. Il parco si estende per circa dieci ettari, progettato in stile francese, e all'alba è uno dei luoghi più vivi di Shanghai: anziani che praticano tai-chi, gruppi che ballano, persone che cantano karaoke o giocano a Mah Jong, famiglie. Uscendo dall'angolo nord-ovest si imbocca <strong>Sinan Road</strong>; all'altezza di Xiangshan Road, sulla sinistra, il <strong>Museo della Residenza di Sun Yat-Sen</strong>. Poco oltre, dietro una porta laccata di rosso, l'ex residenza del generale Zhou Enlai, oggi museo gratuito.</p>
+
+        <h3>Tianzifang <span class="han">田子坊</span></h3>
+        <p>Su Taikang Road, sulla destra, si apre <strong>Tianzifang</strong>: vicoli stretti, studi fotografici, gallerie, boutique, caffè. Negli anni Novanta, mentre Shanghai demoliva strutture simili per fare spazio a edifici nuovi, Tianzifang fu in parte preservata grazie all'arrivo di artisti come <strong>Chen Yifei</strong>, che vi aprì studio e spazi espositivi. Da lì, l'effetto progressivo.</p>
+
+        <h3>Da Shaoxing Road a Jinxian Road</h3>
+        <p>Proseguendo verso nord su Shaanxi South Road si imbocca Shaoxing Road. Indirizzi citati: <strong>Dean's Bottle Shop</strong> (per il sidro), <strong>Manne et Sante</strong> (panetteria, secondo piano per dolci e caffè), e al 27 la storica <em>Old China Hand Reading Room</em>, libreria-caffetteria chiusa dal 2017.</p>
+        <p>Da qui si svolta su <strong>Yongjia Road</strong>, dove si trova lo Shanghai Culture Square Theatre — vale la pena entrare anche solo per la parete artistica in vetro e la fontana nell'atrio. Si prosegue su Maoming South Road, dove i <strong>sarti di qipao</strong> espongono abiti tradizionali ricamati a mano, vere opere tessili, anche solo da osservare.</p>
+
+        <h4>Un tuffo nell'art déco</h4>
+        <p>All'incrocio tra Huaihai Road e Maoming South si trova il <strong>Cathay Theatre</strong>, progettato dall'architetto ungherese C.H. Gonda e completato nel 1930. Il nome "Cathay" indicava la Cina settentrionale, ed era usato dai resoconti di viaggio di Marco Polo durante l'epoca del dominio mongolo Yuan. Più avanti, il Lyceum Theatre, anch'esso anni Trenta.</p>
+
+        <div class="pull">
+          <p class="pq">L'atmosfera è una parte fondamentale dell'esperienza: vicoli, boutique, panni stesi, dettagli quotidiani.</p>
+        </div>
+
+        <h3>Cong you bing e Museo delle Arti e dei Mestieri</h3>
+        <p>Su Jiashan Road, un piccolo negozio a conduzione familiare prepara <strong>cong you bing</strong> — <span class="han">葱油饼</span> — frittelle cinesi allo scalogno: pasta arrotolata, friggitura in padella, croccantezza salata. Al 79 di FenYang Road, infine, il <strong>Museo delle Arti e dei Mestieri di Shanghai</strong>: intaglio della giada, ricamo, taglio della carta, dimostrazioni dal vivo. Otto yuan il biglietto. Orari 9:00–17:00.</p>
+
+        <h4>Note pratiche</h4>
+        <ul>
+          <li>Scarpe comode, percorso interamente a piedi</li>
+          <li>Sulle mappe digitali: disattivare la visualizzazione satellitare</li>
+          <li>Orari e biglietti dei musei vanno verificati in loco</li>
+          <li>Tappe sono opzionali: l'atmosfera del quartiere è il punto</li>
+        </ul>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="shanghai">
+            <span class="nv-l">Precedente · § 02</span>
+            <span class="nv-t">Shanghai</span>
+          </div>
+          <div class="nv next" data-open="zhouzhuang">
+            <span class="nv-l">Successivo · § 04</span>
+            <span class="nv-t">Zhouzhuang</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- ZHOUZHUANG -->
+      <article class="article" id="art-zhouzhuang" data-screen-label="E · Zhouzhuang">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 04 · Zhouzhuang</span>
+            <span class="han">周庄 · 水乡</span>
+          </div>
+          <h2>Zhouzhuang, <em>città sull'acqua</em></h2>
+          <p class="deck">Novecento anni di canali, ponti in pietra e residenze Ming e Qing, a settanta chilometri da Shanghai. Una gita giornaliera nella Cina di pietra e acqua.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Provincia</div><div class="m-v">Jiangsu</div></div>
+            <div><div class="m-l">Distanza</div><div class="m-v">70 km da Shanghai</div></div>
+            <div><div class="m-l">Storia</div><div class="m-v">900+ anni</div></div>
+            <div><div class="m-l">Ingresso</div><div class="m-v">100 ¥</div></div>
+          </div>
+        </header>
+
+        <p class="lede">Zhouzhuang si trova nella provincia di Jiangsu, tra Shanghai e Suzhou, ed è oltre il 60% di architetture risalenti alle dinastie Ming e Qing — il periodo compreso tra il 1368 e il 1911. Rispetto a water town più vicine, raggiungibili in metro o treno e per questo più affollate, Zhouzhuang richiede un passaggio in più: motivo per cui, in certi momenti, è meno presa d'assalto.</p>
+
+        <h3>Come arrivare <span class="han">怎么去</span></h3>
+        <ul>
+          <li><strong>Taxi privato Didi</strong> da Shanghai: ~60 minuti, 30–40 euro a tratta, prenotabile il giorno prima</li>
+          <li><strong>Treno fino a Kunshan Sud</strong> (~20 minuti) + taxi finale fino a Zhouzhuang</li>
+          <li><strong>Escursione organizzata</strong>: praticabile, ma in autonomia conviene di più</li>
+        </ul>
+
+        <h3>I templi <span class="han">寺庙</span></h3>
+        <h4>Lago Nanhu e Tempio Quanfu</h4>
+        <p>Il <strong>Lago Nanhu</strong>, chiamato "la Perla di Zhouzhuang", offre la vista più scenografica sul <strong>Tempio Quanfu</strong> situato al suo centro. Riflessi sull'acqua, scorci panoramici.</p>
+        <h4>Tempio Daoista Chengxu</h4>
+        <p>Non lontano dal Quanfu, il <strong>Tempio Chengxu</strong> risale alla dinastia Song e nei secoli è stato ampliato grazie alle donazioni dei mercanti locali. È considerato uno dei più grandi templi della provincia di Jiangsu; mantiene ancora oggi un ruolo cerimoniale.</p>
+
+        <h3>I ponti <span class="han">桥</span></h3>
+        <h4>I Ponti Gemelli — Shide e Yong'an</h4>
+        <p>Sono il simbolo più riconoscibile della città. Attraversano rispettivamente i fiumi Yinzi e Nanbei, costruiti in epoche diverse — Shide nel 1573, Yong'an nel 1619. Osservati dal punto giusto, ricordano la forma di una chiave antica. Lo scorcio è diventato famoso anche grazie al dipinto <em>Memory of My Hometown</em> di Chen Yifei, esposto a New York.</p>
+        <h4>Ponte Fu'an</h4>
+        <p>Costruito nel 1355, è un esempio dell'architettura della dinastia Yuan, con scale in granito e decorazioni aggiunte sotto i Qing. Zhouzhuang conta in tutto 19 ponti in pietra.</p>
+
+        <div class="pull">
+          <p class="pq">Un villaggio in cui il tempo sembra essersi fermato — purché si arrivi al mattino presto, fuori stagione, lontano dai weekend.</p>
+        </div>
+
+        <h3>Le residenze storiche</h3>
+        <h4>Residenza Zhang <span class="han">张厅</span></h4>
+        <p>Costruita durante la dinastia Ming, è uno degli edifici più antichi della città. Oltre settanta stanze e una particolarità: un fiume attraversa direttamente il complesso.</p>
+        <h4>Residenza Shen <span class="han">沈厅</span></h4>
+        <p>Della dinastia Qing, si estende su circa duemila metri quadrati e comprende oltre cento stanze distribuite attorno a sette cortili. Una delle residenze storiche più importanti di Zhouzhuang.</p>
+
+        <h3>Note operative</h3>
+        <table>
+          <tbody>
+            <tr><td>Classifica turistica</td><td class="n">AAAAA</td></tr>
+            <tr><td>Biglietto centro storico</td><td class="n">100 ¥</td></tr>
+            <tr><td>Documento richiesto</td><td>Passaporto originale</td></tr>
+            <tr><td>Orari migliori</td><td>Mattino presto, tramonto</td></tr>
+            <tr><td>Da evitare</td><td>Weekend, festività, luglio/agosto</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Alternative considerate</h4>
+        <ul>
+          <li><strong>Nanxun</strong> — un equilibrio simile, generalmente meno affollata</li>
+          <li><strong>Tongli, Zhujiajiao</strong> — più comode da raggiungere, e per questo più frequentate</li>
+          <li><strong>Suzhou</strong> — caso a parte: una vera metropoli con giardini, meriterebbe due giorni propri</li>
+        </ul>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="frenchconcession">
+            <span class="nv-l">Precedente · § 03</span>
+            <span class="nv-t">French Concession</span>
+          </div>
+          <div class="nv next" data-open="yunnan">
+            <span class="nv-l">Successivo · § 05</span>
+            <span class="nv-t">Yunnan del Nord</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- YUNNAN -->
+      <article class="article" id="art-yunnan" data-screen-label="F · Yunnan">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 05 · Yunnan del Nord</span>
+            <span class="han">云南 · 北部</span>
+          </div>
+          <h2>Yunnan, <em>città storiche e minoranze</em></h2>
+          <p class="deck">Sette notti tra Lijiang, Shuhe, Shaxi, Shibaoshan, Shangri-La e Dali. Templi, mercati Bai, monasteri tibetani, laghi d'altura, Via del Tè e dei Cavalli.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Notti</div><div class="m-v">7 (Shuhe 3 · Shangri-La 3 · Dali 1)</div></div>
+            <div><div class="m-l">Altitudine max</div><div class="m-v">3.200 m (Shangri-La)</div></div>
+            <div><div class="m-l">Minoranze incontrate</div><div class="m-v">Naxi · Bai · Tibetana</div></div>
+            <div><div class="m-l">Hotel</div><div class="m-v">The Bivou (Shuhe)</div></div>
+          </div>
+        </header>
+
+        <p class="lede">Lo Yunnan del nord è la sezione del viaggio che, in retrospettiva, ha pesato di più. Una regione di valore paesaggistico e culturale che intreccia città storiche, villaggi etnici, templi, mercati e paesaggi montani. Lijiang, Baisha e Shuhe si trovano a 15–30 minuti l'una dall'altra: ci si stabilisce in una delle tre e si visitano facilmente le altre, muovendosi con Didi.</p>
+
+        <h3>Lijiang <span class="han">丽江</span></h3>
+        <p>La Città Vecchia di Lijiang — <em>Dayan Old Town</em> — è Patrimonio UNESCO: vicoli acciottolati, canali, antiche case in legno, botteghe. Va detto che l'impressione personale è ambivalente: il centro storico è molto curato, quasi troppo perfetto, costruito e turistico, con un'atmosfera che può sembrare poco autentica. Una percezione, certo, non un giudizio. Da non perdere: Piazza Sifang, il Palazzo della Famiglia Mu (residenza dei governanti locali sotto la dinastia Ming), e la salita alla Lion Hill con il Padiglione Wangu di cinque piani.</p>
+
+        <h3>Baisha <span class="han">白沙</span> e Shuhe <span class="han">束河</span></h3>
+        <p><strong>Baisha</strong> fu capitale del Regno Naxi prima dell'ingresso nell'impero Yuan, tra il 1271 e il 1368. Il suo elemento più importante sono i <strong>murales di Baisha</strong>, esposti in templi come il Palazzo Dabaoji, che combinano influenze buddhiste, taoiste e tibetane. Da visitare anche l'Istituto di Ricamo Naxi, dove sono esposti pezzi nascosti durante la Rivoluzione Culturale per proteggerli.</p>
+        <p><strong>Shuhe</strong> è la più tranquilla delle tre, soprattutto a nord del ruscello, in un'area con boschi, orti e giardini. La base scelta per le tre notti è il boutique <strong>The Bivou</strong>, hotel utile non solo per il soggiorno ma anche per le escursioni proposte agli ospiti — spesso le guide migliori si organizzano in loco, non online.</p>
+
+        <h3>Tiger Leaping Gorge <span class="han">虎跳峡</span></h3>
+        <p>Una delle gole più profonde al mondo: lunga circa quindici chilometri, con un dislivello fino a 3.790 metri tra le montagne e il fiume. Il nome viene da una leggenda — una tigre inseguita da un cacciatore avrebbe saltato da una sponda all'altra nel punto più stretto, largo circa venticinque metri. Si visita in giornata, o come tappa intermedia tra Lijiang e Shangri-La, essendo all'incirca a metà strada.</p>
+
+        <h3>Shaxi <span class="han">沙溪</span> — Via del Tè e dei Cavalli</h3>
+        <p>Shaxi è stata, francamente, la località preferita dello Yunnan. È un antico villaggio mercantile della contea di Jianchuan, lungo la Via del Tè e dei Cavalli. Le origini risalgono alla dinastia Tang, intorno al 700 d.C., e prosperò sotto i Ming e i Qing. Con il declino della Via, perse importanza commerciale — ed è proprio questa decadenza ad averne conservato l'aspetto originario.</p>
+        <p>Nel 2001 la sua piazza fu inserita dal World Monuments Fund tra i 100 siti più a rischio; nel 2004 un team di architetti svizzeri ne guidò il restauro intorno a <strong>Piazza Sideng</strong>, recuperando il Tempio Xingjiao e il teatro antico della dinastia Qing.</p>
+
+        <blockquote>
+          Per trovare il mercato del venerdì, basta seguire le donne con il cesto sulle spalle.
+          <span class="src">Cultura Bai · Shaxi</span>
+        </blockquote>
+
+        <p>Il <strong>mercato del venerdì</strong> è la ragione per cui Shaxi va vista in un giorno preciso: è frequentato soprattutto da persone locali, donne Bai in abiti tradizionali, ed è particolarmente interessante perché i turisti cinesi vi trovano poco interesse — i prodotti li hanno già nelle proprie zone.</p>
+
+        <h3>Shibaoshan <span class="han">石宝山</span></h3>
+        <p>Il complesso templare di Shibaoshan si trova circa dieci chilometri a nord di Shaxi. Dal 1982 è riserva naturale e religiosa protetta. Tre montagne — Baoding, Shisan, Shizhong — fino a 3.083 metri d'altitudine. Quattro templi principali: Shizhong, Baoxiang, Haiyun, Jinding. Grazie alla posizione remota, sono sopravvissuti alla Rivoluzione Culturale. Nella foresta vivono macachi liberi, da non avvicinare.</p>
+
+        <h3>Shangri-La <span class="han">香格里拉</span></h3>
+        <p>A circa 3.200 metri d'altitudine, nella prefettura autonoma tibetana di Diqing. In passato si chiamava <em>Zhongdian</em>: cambiò ufficialmente nome nel 2001, richiamando l'immaginario di <em>Lost Horizon</em> di James Hilton. Nel gennaio 2014 un incendio distrusse gran parte della città antica, poi ricostruita.</p>
+        <h4>Songzanlin · il Piccolo Potala</h4>
+        <p>Il <strong>Monastero di Ganden Sumtseling</strong> — <em>Songzanlin</em> — è il più grande monastero tibetano dello Yunnan. Fondato nel XVII secolo dal quinto Dalai Lama, ospita circa settecento monaci. Per accedervi si prende una navetta dalla biglietteria, oppure si percorre a piedi un sentiero di 2,5 km. Costo circa nove euro, passaporto obbligatorio.</p>
+        <h4>Napahai · il lago stagionale</h4>
+        <p>Otto chilometri a nord-ovest di Shangri-La, a 3.270 metri, circondato dalle montagne dell'Himalaya. Nella stagione delle piogge può coprire 66 km²; in inverno si riduce a grandi prati. Riserva naturale e importante area per uccelli migratori — tra cui la rara gru dal collo nero. Per visitarlo si può affittare un driver tramite l'hotel per un paio d'ore.</p>
+        <h4>Baiji Monastery / Tempio dei 100 Polli</h4>
+        <p>Sulla collina occidentale della città antica di Dukezong, costruito sotto la dinastia Yuan. Il nome viene dalla tradizione locale di portare polli come offerte votive: i fedeli li portavano al tempio per liberarli sulla collina, in segno di gratitudine o per ottenere benedizioni. Al mattino presto si sentono ancora i galli.</p>
+
+        <h3>Dali <span class="han">大理</span></h3>
+        <p>Da Shangri-La a Dali, quattro ore di treno (cercare "Xianggelila", nome cinese di Shangri-La). Una sola notte a Dali è stata troppo poco. La città è meno perfetta di Lijiang, più autentica, situata sulle rive del Lago Erhai e circondata dalle montagne. Da vedere: le <strong>Tre Pagode</strong>, costruite tra il 618 e il 907 sotto i Tang; il <strong>Lago Erhai</strong> ("Mare di Orecchie"), uno dei principali laghi d'acqua dolce della Cina; i villaggi Bai di Xizhou e Shuanglang.</p>
+
+        <h4>Dove dormire</h4>
+        <ul>
+          <li><strong>Lijiang / Shuhe</strong> · The Bivou, boutique hotel, valido anche per organizzare escursioni</li>
+          <li><strong>Dali</strong> · Dali Old Courtyard Boutique Inn, in via laterale a due minuti da Fuxing Road</li>
+        </ul>
+
+        <div class="pull">
+          <p class="pq">Nelle cittadine dello Yunnan è meglio allontanarsi dalle vie principali: sulle laterali l'atmosfera è più calma.</p>
+        </div>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="zhouzhuang">
+            <span class="nv-l">Precedente · § 04</span>
+            <span class="nv-t">Zhouzhuang</span>
+          </div>
+          <div class="nv next" data-open="huanghuacheng">
+            <span class="nv-l">Successivo · § 06</span>
+            <span class="nv-t">Huanghuacheng</span>
+          </div>
+        </nav>
+      </article>
+
+      <!-- HUANGHUACHENG -->
+      <article class="article" id="art-huanghuacheng" data-screen-label="G · Huanghuacheng">
+        <header class="article-head">
+          <div class="article-eyebrow">
+            <span>§ 06 · Huanghuacheng</span>
+            <span class="han">长城 · 黄花城</span>
+          </div>
+          <h2>La Muraglia, <em>tratto sconosciuto</em></h2>
+          <p class="deck">Settanta chilometri a nord di Pechino, dove il muro entra nel lago. Costruito nel 1404, oltre dodici chilometri, fioriture gialle a primavera e castagneti Ming.</p>
+          <div class="article-meta">
+            <div><div class="m-l">Anno</div><div class="m-v">1404</div></div>
+            <div><div class="m-l">Lunghezza</div><div class="m-v">12,4 km</div></div>
+            <div><div class="m-l">Distanza da Pechino</div><div class="m-v">~70 km nord</div></div>
+            <div><div class="m-l">Biglietto</div><div class="m-v">60 ¥</div></div>
+          </div>
+        </header>
+
+        <p class="lede">La sezione di Huanghuacheng è meno conosciuta rispetto a Badaling e Mutianyu, e proprio per questo più adatta a chi cerca una visita più tranquilla e particolare. La sua caratteristica principale è la combinazione tra muraglia, montagne e lago artificiale: in alcuni punti la struttura sembra immergersi nell'acqua. Da qui un secondo nome — la Grande Muraglia dell'acqua.</p>
+
+        <h3>Quale sezione scegliere <span class="han">选择</span></h3>
+        <ul>
+          <li><strong>Badaling</strong> — la più famosa e facile da Pechino, ben restaurata, molto affollata</li>
+          <li><strong>Mutianyu</strong> — panoramica, ben conservata, con funivia; popolare ma più rilassata di Badaling</li>
+          <li><strong>Jinshanling</strong> — più autentica e avventurosa, alterna tratti restaurati a sezioni originali</li>
+          <li><strong>Huanghuacheng</strong> — la scelta finale: meno turistica, paesaggio lacustre, fioriture in primavera</li>
+        </ul>
+
+        <h3>Perché qui <span class="han">为什么</span></h3>
+        <p>Huanghuacheng è chiamata anche <em>"Muro dei fiori gialli"</em>, per la fioritura primaverile che caratterizza il paesaggio. Il tratto fu costruito nel 1404 e si estende per oltre 12,4 chilometri. Un altro elemento caratteristico sono i <strong>castagneti secolari</strong>, piantati dai soldati della dinastia Ming: producono ancora castagne e offrono zone d'ombra utili durante la visita. Il 19 luglio, in piena alta stagione, l'area era quasi deserta.</p>
+
+        <h3>Il percorso, in tre sezioni</h3>
+        <ol>
+          <li><strong>Dalla diga al Passo di Zhuangdaokou</strong> — la più semplice, accessibile anche a famiglie. Il punto panoramico principale si raggiunge in circa 20 minuti. Bar alla fine.</li>
+          <li><strong>Fino al Ponte di Vetro</strong> — più impegnativa, parti decisamente ripide. Forma fisica discreta.</li>
+          <li><strong>Dal Ponte di Vetro alla piattaforma panoramica</strong> — la più faticosa. Ripida, poco ombreggiata. Per chi è allenato.</li>
+        </ol>
+        <p>Per completare le tre sezioni servono circa due ore. In estate, l'obiettivo è chiudere il percorso entro le 11:00 — dopo, il caldo rende difficile proseguire.</p>
+
+        <h4>Come scendere</h4>
+        <ul>
+          <li><strong>Scivolo magnetico</strong> dalla piattaforma panoramica — rapido e particolare</li>
+          <li><strong>A piedi</strong> dal primo tratto, seguendo un sentiero quasi pianeggiante sulla sinistra del lago</li>
+          <li><strong>Barca</strong> — torna verso la zona dopo la biglietteria iniziale, ma le partenze dipendono dal numero di passeggeri</li>
+        </ul>
+
+        <h3>Quando andare <span class="han">何时去</span></h3>
+        <p>Primavera (fine aprile–inizio giugno) per la fioritura dei fiori gialli; autunno (settembre–ottobre) per il foliage rosso e oro. Da fare attenzione alla <strong>Festa di Metà Autunno</strong>, che segue il calendario cinese e cade tra metà settembre e metà ottobre — moltissime persone si spostano nel Paese, viaggiare diventa difficile.</p>
+
+        <div class="pull">
+          <p class="pq">Il 19 luglio, in piena alta stagione, la zona era quasi deserta — un piccolo miracolo della Cina meno battuta.</p>
+        </div>
+
+        <h3>Come arrivare</h3>
+        <p>L'esperienza è stata un'<strong>escursione con guida e driver privato</strong> prenotata su Viator. Comoda, ma con il senno di poi, fattibile in autonomia con <strong>Didi</strong>: due ore di auto da Pechino, partenza presto al mattino — non oltre le 9:00 all'ingresso. Verificare però in anticipo che l'autista accetti la tratta. In alternativa, autobus 916 da Dongzhimen + cambio, o autobus diretti nei weekend da Dongzhimen e Xuanwumen.</p>
+
+        <h4>Orari & biglietti</h4>
+        <table>
+          <tbody>
+            <tr><td>Apertura</td><td class="n">8:30 – 17:00</td></tr>
+            <tr><td>Biglietto intero</td><td class="n">60 ¥</td></tr>
+            <tr><td>Studenti</td><td class="n">30 ¥</td></tr>
+            <tr><td>Sotto 1,20 m</td><td>Gratuito</td></tr>
+          </tbody>
+        </table>
+
+        <nav class="article-nav">
+          <div class="nv prev" data-open="yunnan">
+            <span class="nv-l">Precedente · § 05</span>
+            <span class="nv-t">Yunnan</span>
+          </div>
+          <div class="nv empty"></div>
+        </nav>
+      </article>
+
+      <!-- Hidden stop-only sections: SHUHE, SHANGRILA, DALI, SHAXI, BEIJING -->
+      <!-- These reuse the Yunnan / Beijing articles via aliases mapped in JS -->
+
+    </div>
+  </main>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer class="site-foot" id="footer" data-screen-label="03 Footer">
+  <div class="row">
+    <div class="mark">Cina, duemilaventiquattro <span class="han">中国</span> · <em>zàijiàn</em> <span class="han" style="margin-left:8px;">再见</span></div>
+    <div class="cols">
+      <div class="col">
+        <span>Periodo</span>
+        <em>15 Luglio — 30 Luglio 2024</em>
+      </div>
+      <div class="col">
+        <span>Tappe</span>
+        <em>Shanghai · Shuhe · Shangri-La · Dali · Pechino</em>
+      </div>
+      <div class="col">
+        <span>Atlante</span>
+        <em>Archivio personale · MMXXIV</em>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Map of stop-id (used on the map and in the URL) → article-id
+  const STOP_TO_ARTICLE = {
+    'overview':       'overview',
+    'itinerario':     'itinerario',
+    'shanghai':       'shanghai',
+    'frenchconcession':'frenchconcession',
+    'zhouzhuang':     'zhouzhuang',
+    'shuhe':          'yunnan',
+    'shaxi':          'yunnan',
+    'shangrila':      'yunnan',
+    'dali':           'yunnan',
+    'beijing':        'huanghuacheng',
+    'huanghuacheng':  'huanghuacheng',
+    'yunnan':         'yunnan'
+  };
+
+  const stops      = document.querySelectorAll('.stop-group');
+  const articles   = document.querySelectorAll('.article');
+  const emptyState = document.getElementById('contentEmpty');
+  const closeBtn   = document.getElementById('articleClose');
+
+  function openArticle(id){
+    const target = 'art-' + (STOP_TO_ARTICLE[id] || id);
+    let found = false;
+    articles.forEach(a => {
+      if (a.id === target){
+        a.classList.add('is-active');
+        found = true;
+      } else {
+        a.classList.remove('is-active');
+      }
+    });
+    if (!found) return;
+
+    emptyState.style.display = 'none';
+    closeBtn.style.display = 'flex';
+
+    // mark active map stop(s)
+    stops.forEach(s => s.classList.remove('is-active'));
+    document.querySelectorAll('.stop-group[data-stop="'+id+'"]').forEach(s => s.classList.add('is-active'));
+
+    // Also light related stops if the article is shared (e.g., Yunnan)
+    const sharedArticleId = STOP_TO_ARTICLE[id];
+    if (sharedArticleId === 'yunnan'){
+      ['shuhe','shaxi','shangrila','dali'].forEach(sid => {
+        document.querySelectorAll('.stop-group[data-stop="'+sid+'"]').forEach(s => s.classList.add('is-active'));
+      });
+    }
+    if (sharedArticleId === 'huanghuacheng'){
+      ['beijing','huanghuacheng'].forEach(sid => {
+        document.querySelectorAll('.stop-group[data-stop="'+sid+'"]').forEach(s => s.classList.add('is-active'));
+      });
+    }
+    if (sharedArticleId === 'shanghai'){
+      document.querySelectorAll('.stop-group[data-stop="shanghai"]').forEach(s => s.classList.add('is-active'));
+    }
+    if (sharedArticleId === 'frenchconcession' || sharedArticleId === 'zhouzhuang'){
+      document.querySelectorAll('.stop-group[data-stop="shanghai"]').forEach(s => s.classList.add('is-active'));
+      document.querySelectorAll('.stop-group[data-stop="'+id+'"]').forEach(s => s.classList.add('is-active'));
+    }
+
+    if (history.replaceState) history.replaceState(null, '', '#'+id);
+
+    // Scroll content area to top, smoothly
+    const atlas = document.getElementById('atlas');
+    const rect  = atlas.getBoundingClientRect();
+    if (rect.top > 8 || rect.top < -window.innerHeight){
+      window.scrollTo({top: atlas.offsetTop, behavior: 'smooth'});
+    }
+    document.querySelector('.atlas-content').scrollTo?.({top:0, behavior:'instant'});
+  }
+
+  function closeArticle(){
+    articles.forEach(a => a.classList.remove('is-active'));
+    stops.forEach(s => s.classList.remove('is-active'));
+    emptyState.style.display = '';
+    closeBtn.style.display = 'none';
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+  }
+
+  // Wire stops
+  stops.forEach(stop => {
+    const id = stop.getAttribute('data-stop');
+    stop.addEventListener('click', () => openArticle(id));
+    stop.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openArticle(id); }
+    });
+  });
+
+  // Wire index links + cross-link next/prev
+  document.querySelectorAll('[data-open]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openArticle(el.getAttribute('data-open'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeArticle);
+
+  // Escape closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeArticle();
+  });
+
+  // Top-nav jumps
+  document.querySelectorAll('[data-jump]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tgt = a.getAttribute('data-jump');
+      if (tgt === 'atlas')      document.getElementById('atlas').scrollIntoView({behavior:'smooth', block:'start'});
+      else if (tgt === 'footer') document.getElementById('footer').scrollIntoView({behavior:'smooth', block:'start'});
+      else { openArticle(tgt); document.getElementById('atlas').scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  // Hero "Apri la mappa"
+  document.getElementById('heroScroll').addEventListener('click', () => {
+    document.getElementById('atlas').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // Initial state from URL hash
+  if (location.hash){
+    const id = location.hash.replace('#','');
+    if (STOP_TO_ARTICLE[id]) {
+      // Wait a tick so layout settles, then open + jump
+      setTimeout(() => {
+        openArticle(id);
+        document.getElementById('atlas').scrollIntoView({behavior:'instant', block:'start'});
+      }, 50);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
