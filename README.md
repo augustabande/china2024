@@ -318,7 +318,7 @@ Il copyright dei testi originali appartiene ai rispettivi autori. Questo atlante
 
 ### Codice
 
-Codice del sito rilasciato sotto licenza **MIT**. Vedere `LICENSE` (da aggiungere se si pubblica).
+© 2026 Augusta Bande. Tutti i diritti riservati.
 
 ---
 
