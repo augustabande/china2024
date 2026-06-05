@@ -327,14 +327,18 @@
     justify-content: center;
     overflow: hidden;
   }
-  .map-svg{
+  .map-svg-scaler{
     width: 100%; height: 100%;
-    max-width: 720px;
+    display: flex; align-items: center; justify-content: center;
     transform-origin: center center;
     will-change: transform;
     cursor: grab;
   }
-  .map-svg.is-dragging{ cursor: grabbing; }
+  .map-svg-scaler.is-dragging{ cursor: grabbing; }
+  .map-svg{
+    width: 100%; height: 100%;
+    max-width: 720px;
+  }
 
   /* Zoom controls */
   .map-zoom-controls{
@@ -1041,6 +1045,7 @@
       <div class="map-sub">Otto tappe — una rotta tra metropoli, valli e montagne</div>
 
       <div class="map-svg-wrap">
+        <div class="map-svg-scaler">
         <svg class="map-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mappa stilizzata della Cina con le tappe del viaggio">
           <defs>
             <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
@@ -1192,6 +1197,7 @@
           </g>
 
         </svg>
+        </div><!-- /.map-svg-scaler -->
 
         <div class="map-zoom-controls" aria-label="Controlli zoom">
           <button id="mapZoomIn" class="map-zoom-btn" aria-label="Zoom avanti" title="Zoom +">
@@ -1975,7 +1981,7 @@
 // ── Map zoom & pan ────────────────────────────────────────────
 (function(){
   const wrap     = document.querySelector('.map-svg-wrap');
-  const svg      = document.querySelector('.map-svg');
+  const svg      = document.querySelector('.map-svg-scaler');
   const btnIn    = document.getElementById('mapZoomIn');
   const btnOut   = document.getElementById('mapZoomOut');
   const btnReset = document.getElementById('mapZoomReset');
