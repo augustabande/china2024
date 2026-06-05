@@ -325,11 +325,46 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
   .map-svg{
     width: 100%; height: 100%;
     max-width: 720px;
+    transform-origin: center center;
+    will-change: transform;
+    cursor: grab;
   }
+  .map-svg.is-dragging{ cursor: grabbing; }
+
+  /* Zoom controls */
+  .map-zoom-controls{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .map-zoom-btn{
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    padding: 0;
+    cursor: pointer;
+    transition: background .12s, color .12s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .map-zoom-btn:first-child{ border-radius: 2px 2px 0 0; }
+  .map-zoom-btn:last-child{ border-radius: 0 0 2px 2px; }
+  .map-zoom-btn:hover{ background: var(--paper-deep); color: var(--ink); }
+  .map-zoom-btn:active{ background: var(--rule-soft); }
+  .map-zoom-btn:disabled{ opacity: .25; pointer-events: none; }
   .map-foot{
     display: flex;
     justify-content: space-between;
@@ -1157,6 +1192,26 @@
           </g>
 
         </svg>
+
+        <div class="map-zoom-controls" aria-label="Controlli zoom">
+          <button id="mapZoomIn" class="map-zoom-btn" aria-label="Zoom avanti" title="Zoom +">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.3"/>
+              <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+          </button>
+          <button id="mapZoomOut" class="map-zoom-btn" aria-label="Zoom indietro" title="Zoom −" disabled>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+          </button>
+          <button id="mapZoomReset" class="map-zoom-btn" aria-label="Reimposta zoom" title="Reimposta" disabled>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="6" cy="6" r="4.2" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="6" cy="6" r="1.4" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="map-foot">
@@ -1915,6 +1970,147 @@
       }, 50);
     }
   }
+})();
+
+// ── Map zoom & pan ────────────────────────────────────────────
+(function(){
+  const wrap     = document.querySelector('.map-svg-wrap');
+  const svg      = document.querySelector('.map-svg');
+  const btnIn    = document.getElementById('mapZoomIn');
+  const btnOut   = document.getElementById('mapZoomOut');
+  const btnReset = document.getElementById('mapZoomReset');
+
+  let zoom = 1, panX = 0, panY = 0;
+  const STEP = 0.6, MIN = 1, MAX = 3;
+
+  function applyTransform(animate){
+    svg.style.transition = animate ? 'transform .22s ease' : 'none';
+    svg.style.transform  = `translate(${panX}px,${panY}px) scale(${zoom})`;
+    btnIn.disabled    = zoom >= MAX;
+    btnOut.disabled   = zoom <= MIN;
+    btnReset.disabled = zoom <= MIN && panX === 0 && panY === 0;
+    wrap.style.touchAction = zoom > MIN ? 'none' : '';
+  }
+
+  function clampPan(){
+    const maxX = Math.max(0, (svg.offsetWidth  * zoom - wrap.offsetWidth)  / 2);
+    const maxY = Math.max(0, (svg.offsetHeight * zoom - wrap.offsetHeight) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, panX));
+    panY = Math.max(-maxY, Math.min(maxY, panY));
+  }
+
+  btnIn.addEventListener('click', () => {
+    zoom = Math.min(MAX, parseFloat((zoom + STEP).toFixed(2)));
+    clampPan();
+    applyTransform(true);
+  });
+
+  btnOut.addEventListener('click', () => {
+    zoom = Math.max(MIN, parseFloat((zoom - STEP).toFixed(2)));
+    if (zoom <= MIN){ panX = 0; panY = 0; }
+    else clampPan();
+    applyTransform(true);
+  });
+
+  btnReset.addEventListener('click', () => {
+    zoom = 1; panX = 0; panY = 0;
+    applyTransform(true);
+  });
+
+  // ── Touch: pinch-to-zoom + single-finger pan ──────────────
+  let pinching = false, panning = false;
+  let initDist = 0, initZoom = 1;
+  let initMidX = 0, initMidY = 0, initPanX = 0, initPanY = 0;
+  let dragX = 0, dragY = 0, dragPanX = 0, dragPanY = 0;
+
+  function touchDist(t){ return Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY); }
+  function touchMid(t){ return { x:(t[0].clientX+t[1].clientX)/2, y:(t[0].clientY+t[1].clientY)/2 }; }
+
+  wrap.addEventListener('touchstart', e => {
+    const ts = Array.from(e.touches);
+    if (ts.length === 2){
+      e.preventDefault();
+      pinching = true; panning = false;
+      initDist = touchDist(ts);
+      initZoom = zoom;
+      const mid = touchMid(ts);
+      initMidX = mid.x; initMidY = mid.y;
+      initPanX = panX;  initPanY = panY;
+    } else if (ts.length === 1 && zoom > MIN){
+      panning  = true;
+      dragX    = ts[0].clientX; dragY = ts[0].clientY;
+      dragPanX = panX; dragPanY = panY;
+      svg.classList.add('is-dragging');
+    }
+  }, {passive: false});
+
+  wrap.addEventListener('touchmove', e => {
+    const ts = Array.from(e.touches);
+    if (pinching && ts.length >= 2){
+      e.preventDefault();
+      const d   = touchDist(ts);
+      const mid = touchMid(ts);
+      zoom = Math.max(MIN, Math.min(MAX, initZoom * (d / initDist)));
+      panX = initPanX + (mid.x - initMidX);
+      panY = initPanY + (mid.y - initMidY);
+      clampPan();
+      svg.style.transition = 'none';
+      svg.style.transform  = `translate(${panX}px,${panY}px) scale(${zoom})`;
+    } else if (panning && ts.length === 1){
+      e.preventDefault();
+      panX = dragPanX + (ts[0].clientX - dragX);
+      panY = dragPanY + (ts[0].clientY - dragY);
+      clampPan();
+      svg.style.transition = 'none';
+      svg.style.transform  = `translate(${panX}px,${panY}px) scale(${zoom})`;
+    }
+  }, {passive: false});
+
+  wrap.addEventListener('touchend', e => {
+    if (e.touches.length < 2) pinching = false;
+    if (e.touches.length === 0){
+      panning = false;
+      svg.classList.remove('is-dragging');
+      applyTransform(false);
+    }
+    wrap.style.touchAction = zoom > MIN ? 'none' : '';
+  });
+
+  // ── Mouse drag when zoomed (desktop) ─────────────────────
+  let mdown = false, moved = false;
+  let mdX = 0, mdY = 0, mdPX = 0, mdPY = 0;
+
+  wrap.addEventListener('mousedown', e => {
+    if (zoom <= MIN) return;
+    mdown = true; moved = false;
+    mdX = e.clientX; mdY = e.clientY;
+    mdPX = panX; mdPY = panY;
+    svg.classList.add('is-dragging');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!mdown) return;
+    const dx = e.clientX - mdX, dy = e.clientY - mdY;
+    if (Math.hypot(dx, dy) > 3) moved = true;
+    if (!moved) return;
+    panX = mdPX + dx; panY = mdPY + dy;
+    clampPan();
+    svg.style.transition = 'none';
+    svg.style.transform  = `translate(${panX}px,${panY}px) scale(${zoom})`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!mdown) return;
+    mdown = false;
+    svg.classList.remove('is-dragging');
+    if (moved){ applyTransform(false); }
+  });
+
+  // Intercept click after a drag so stops don't open accidentally
+  wrap.addEventListener('click', e => {
+    if (moved){ e.stopPropagation(); moved = false; }
+  }, true);
 })();
 </script>
 
